@@ -119,4 +119,20 @@ internal class SuggesterTest {
             assertEquals(expected, actual)
         }
     }
+
+    @Test
+    fun `Complex Expression`() {
+        val actual = any {
+            suggest { false }
+            suggestAll { all ->
+                all.suggest { true }
+                suggestAny {
+                    it.suggest { false }
+                    it.suggest { true }
+                }
+            }
+        }
+        val expected = true
+        assertEquals(expected, actual)
+    }
 }
