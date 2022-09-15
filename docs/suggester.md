@@ -24,7 +24,7 @@ val couldBeDisposed = any {
     suggest { money > 0f }
     suggestAll { all ->
         all.suggest { admin in allowedAdmins }
-        suggestAny {
+        all.suggestAny {
             it.suggest { foods.isNotEmpty() }
             it.suggest { foods.first().type != Food.Water }
         }
